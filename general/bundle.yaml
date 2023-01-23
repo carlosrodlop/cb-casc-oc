@@ -2,7 +2,7 @@ apiVersion: "1"
 id: "jenkins"
 version: "1"
 jcasc:
-  - general.yaml
+  - main.yaml
   - credentials.yaml
   - license.yaml
   - security.yaml
