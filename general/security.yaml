@@ -7,11 +7,11 @@ jenkins:
       allowsSignup: false
       users:
         - id: "admin"
-          password: ${readFile:${SECRETS}/jenkinsPass}
+          password: ${jenkinsPass}
         - id: "developer"
-          password: ${readFile:${SECRETS}/jenkinsPass}
+          password: ${jenkinsPass}
         - id: "guest"
-          password: ${readFile:${SECRETS}/jenkinsPass}
+          password: ${jenkinsPass}
   # Best-Practice: RBAC as authorization
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   remotingSecurity:
