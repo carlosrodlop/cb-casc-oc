@@ -35,8 +35,8 @@ items:
         #         value: "sda-ci"
         #         effect: "NoSchedule"
     properties:
-      - configurationAsCode:
-          bundle: "good-boy"
+    - configurationAsCode:
+        bundle: "good-boy"
   - kind: managedController
     name: bad-boy
     configuration:
@@ -54,16 +54,5 @@ items:
     properties:
     - configurationAsCode:
         bundle: bad-boy
-    - sharedHeaderLabelOptIn:
-        optIn: true
-    - healthReporting:
-        enabled: true
     - enforceControllerExecutors:
         count: 2
-    - owner:
-        delay: 5
-        owners: ''
-    - envelopeExtension:
-        allowExceptions: false
-    - sharedConfigurationOptOut:
-        optOut: true
