@@ -19,10 +19,3 @@ jenkins:
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: true
-security:
-  # Best-Practice: Do not use In-Build agents (extended to controllers)
-  # https://support.cloudbees.com/hc/en-us/articles/115002654991
-  controllerExecutorCount:
-    enforce:
-      canOverride: true
-      count: 0

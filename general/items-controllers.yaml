@@ -6,7 +6,6 @@ items:
     name: good-boy
     configuration:
       kubernetes:
-        # image: CloudBees CI - Managed Controller - 2.332.3.2
         memory: 3072
         fsGroup: "1000"
         cpus: 4.0
@@ -42,7 +41,6 @@ items:
     name: bad-boy
     configuration:
       kubernetes:
-        # image: CloudBees CI - Managed Controller - 2.332.3.2
         memory: 3072
         fsGroup: "1000"
         cpus: 1.0
@@ -54,5 +52,19 @@ items:
         livenessTimeoutSeconds: 10
         domain: bad-boy
     properties:
-      - configurationAsCode:
-          bundle: "bad-boy"
+    - configurationAsCode:
+        bundle: bad-boy
+    - sharedHeaderLabelOptIn:
+        optIn: true
+    - healthReporting:
+        enabled: true
+    - enforceControllerExecutors:
+        count: 0
+    - owner:
+        delay: 5
+        owners: ''
+    - envelopeExtension:
+        allowExceptions: false
+    - sharedConfigurationOptOut:
+        optOut: true
+
