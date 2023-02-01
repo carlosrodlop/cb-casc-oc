@@ -3,9 +3,8 @@ id: "jenkins"
 version: "1"
 jcasc:
   - main.yaml
-  - location.yaml
   - credentials.yaml
-  - controllerBundleStorageSCM.yaml
+  - license.yaml
   - security.yaml
 plugins:
   - plugins.yaml

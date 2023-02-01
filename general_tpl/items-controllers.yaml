@@ -3,13 +3,13 @@ removeStrategy:
   items: NONE
 items:
   - kind: managedController
-    name: good-boy
+    name: controller-alpha
     configuration:
       kubernetes:
         # image: CloudBees CI - Managed Controller - 2.332.3.2
         memory: 3072
         fsGroup: "1000"
-        cpus: 4.0
+        cpus: 1.0
         readinessTimeoutSeconds: 5
         livenessInitialDelaySeconds: 300
         readinessInitialDelaySeconds: 30
@@ -17,7 +17,7 @@ items:
         readinessFailureThreshold: 100
         livenessTimeoutSeconds: 10
         # storageClassName: my-storage-class
-        domain: good-boy
+        domain: controller-alpha
         # javaOptions: -XshowSettings:vm -XX:+AlwaysPreTouch -XX:+UseG1GC  -XX:+ParallelRefProcEnabled
         #   -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0
         # nodeSelectors: dedicated=sda-ci
@@ -37,9 +37,9 @@ items:
         #         effect: "NoSchedule"
     properties:
       - configurationAsCode:
-          bundle: "good-boy"
+          bundle: "general"
   - kind: managedController
-    name: bad-boy
+    name: controller-beta
     configuration:
       kubernetes:
         # image: CloudBees CI - Managed Controller - 2.332.3.2
@@ -52,7 +52,6 @@ items:
         disk: 5
         readinessFailureThreshold: 100
         livenessTimeoutSeconds: 10
-        domain: bad-boy
+        domain: controller-beta
     properties:
-      - configurationAsCode:
-          bundle: "bad-boy"
+      - configurationAsCode: {}

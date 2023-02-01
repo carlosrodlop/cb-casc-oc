@@ -19,8 +19,24 @@ jenkins:
     - all:
         name: "all"
 unclassified:
+  # Best-Practice: Use SCM for Managed Master Casc Bundles
+  # https://docs.cloudbees.com/docs/cloudbees-ci/2.332.3.4/casc-controller/add-bundle#_adding_casc_bundles_from_an_scm_tool
+  bundleStorageService:
+    activated: true
+    activeBundle:
+      name: "casc-store"
+      retriever:
+        SCM:
+          scmSource:
+            git:
+              credentialsId: "GH-token-merck"
+              remote: https://github.com/carlosrodlop/cb-casc-controllers
+              traits:
+                - "gitBranchDiscovery"
   cascAutoControllerProvisioning:
     provisionControllerOnCreation: true
+  location:
+    url: https://ci.crl.core.pscbdemos.com/cjoc/
     # Best-Practice: Discard Old Builds
     # https://support.cloudbees.com/hc/en-us/articles/215549798
   buildDiscarders:
@@ -34,7 +50,7 @@ unclassified:
     disabledJenkinsUsageStatistics: true
     usageStatisticsCollected: false
 cloudBeesCasCServer:
-  defaultBundle: "good-boy"
+  defaultBundle: "general"
   visibility: true
 # Best-Practice: Enable Beekeeper
 beekeeper:
@@ -63,7 +79,7 @@ advisor:
     - "OtherLogs"
     - "SlaveLaunchLogs"
   nagDisabled: false
-  # Node pools for Kubernetes installation
+  # Node pools for Kubernetes installation 
   # masterprovisioning:
   #   kubernetes:
   #     yaml: |-
@@ -78,4 +94,4 @@ advisor:
   #               - key: "dedicated"
   #                 operator: "Equal"
   #                 value: "apps"
-  #                 effect: "NoSchedule"
+  #                 effect: "NoSchedule" 
