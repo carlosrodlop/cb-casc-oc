@@ -58,8 +58,6 @@ items:
         optIn: true
     - healthReporting:
         enabled: true
-    - enforceControllerExecutors:
-        count: 0
     - owner:
         delay: 5
         owners: ''
@@ -67,4 +65,3 @@ items:
         allowExceptions: false
     - sharedConfigurationOptOut:
         optOut: true
-
