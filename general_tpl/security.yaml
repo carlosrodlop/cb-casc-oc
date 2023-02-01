@@ -1,7 +1,4 @@
 jenkins:
-  # Best-Practice: Do not use In-Build agents
-  # https://support.cloudbees.com/hc/en-us/articles/115002654991
-  numExecutors: 0
   securityRealm:
     local:
       allowsSignup: false

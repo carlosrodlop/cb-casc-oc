@@ -18,6 +18,9 @@ jenkins:
           - "listSelectionColumn"
     - all:
         name: "all"
+  # Best-Practice: Do not use In-Build agents
+  # https://support.cloudbees.com/hc/en-us/articles/115002654991
+  numExecutors: 0
 unclassified:
   cascAutoControllerProvisioning:
     provisionControllerOnCreation: true
