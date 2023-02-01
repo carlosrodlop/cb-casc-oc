@@ -58,6 +58,8 @@ items:
         optIn: true
     - healthReporting:
         enabled: true
+    - enforceControllerExecutors:
+        count: 2
     - owner:
         delay: 5
         owners: ''
