@@ -36,7 +36,7 @@ items:
         #         effect: "NoSchedule"
     properties:
     - configurationAsCode:
-        bundle: "good-boy"
+        bundle: "modern.good-boy"
   - kind: managedController
     name: bad-boy
     configuration:
@@ -53,6 +53,6 @@ items:
         domain: bad-boy
     properties:
     - configurationAsCode:
-        bundle: bad-boy
+        bundle: "modern.bad-boy"
     - enforceControllerExecutors:
         count: 2
