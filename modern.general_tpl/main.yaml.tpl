@@ -48,7 +48,7 @@ unclassified:
             numToKeepStr: "3"
   usageStatisticsCloudBees:
     disabledJenkinsUsageStatistics: true
-    usageStatisticsCollected: false  
+    usageStatisticsCollected: false
 cloudBeesCasCServer:
   defaultBundle: "general"
   visibility: true
@@ -79,7 +79,7 @@ advisor:
   - "OtherLogs"
   - "SlaveLaunchLogs"
   nagDisabled: false
-# Node pools for Kubernetes installation 
+# Node pools for Kubernetes installation
 # masterprovisioning:
 #   kubernetes:
 #     yaml: |-
@@ -94,4 +94,4 @@ advisor:
 #               - key: "dedicated"
 #                 operator: "Equal"
 #                 value: "apps"
-#                 effect: "NoSchedule" 
+#                 effect: "NoSchedule"

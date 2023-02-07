@@ -65,7 +65,6 @@ advisor:
     - "HeapUsageHistogram"
     - "OtherLogs"
     - "SlaveLaunchLogs"
-  nagDisabled: false
   # Node pools for Kubernetes installation
   # masterprovisioning:
   #   kubernetes:
