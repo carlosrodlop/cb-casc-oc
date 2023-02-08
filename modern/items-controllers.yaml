@@ -38,7 +38,7 @@ items:
     - configurationAsCode:
         bundle: "modern.good-boy"
   - kind: managedController
-    name: bad-boy
+    name: fresh-boy
     configuration:
       kubernetes:
         memory: 3072
@@ -50,9 +50,4 @@ items:
         disk: 5
         readinessFailureThreshold: 100
         livenessTimeoutSeconds: 10
-        domain: bad-boy
-    properties:
-    - configurationAsCode:
-        bundle: "modern.bad-boy"
-    - enforceControllerExecutors:
-        count: 2
+        domain: fresh-boy

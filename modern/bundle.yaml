@@ -11,5 +11,6 @@ plugins:
   - plugins.yaml
 items:
   - items-controllers.yaml
+  - items-load-controllers.yaml
 rbac:
   - rbac.yaml
