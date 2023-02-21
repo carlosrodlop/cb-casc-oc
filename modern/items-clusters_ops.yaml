@@ -1,0 +1,54 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: folder
+  name: admin
+  displayName: admin
+  items:
+  - kind: clusterOpProject
+    name: purge-build-queue
+    blockBuildWhenDownstreamBuilding: false
+    blockBuildWhenUpstreamBuilding: false
+    concurrentBuild: true
+    description: ''
+    disabled: false
+    displayName: purge-build-queue
+    operations:
+    - managedMasterClusterOperation:
+        failureMode: IMMEDIATELY
+        clusterOpSteps:
+        - masterGroovyClusterOpStep:
+            script: |-
+              //https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-can-i-purge-or-clean-the-build-queue
+              Jenkins.instance.queue.clear()
+        timeoutSeconds: 0
+        itemSource:
+          jenkinsRootItemSource: {}
+        inParallel: 0
+        noRetries: 0
+    scm:
+      none: {}
+    scmCheckoutStrategy:
+      standard: {}
+  - kind: clusterOpProject
+    name: restart-all-controllers
+    blockBuildWhenDownstreamBuilding: false
+    blockBuildWhenUpstreamBuilding: false
+    concurrentBuild: true
+    disabled: false
+    displayName: restart-all-controllers
+    operations:
+    - managedMasterClusterOperation:
+        failureMode: IMMEDIATELY
+        clusterOpSteps:
+        - restartMasterNowClusterOpStep: {}
+        timeoutSeconds: 0
+        itemSource:
+          jenkinsRootItemSource: {}
+        inParallel: 0
+        noRetries: 0
+    scm:
+      none: {}
+    scmCheckoutStrategy:
+      standard: {}
