@@ -12,5 +12,6 @@ plugins:
 items:
   - items-controllers.yaml
   - items-load-controllers.yaml
+  - items-clusters_ops.yaml
 rbac:
   - rbac.yaml

@@ -24,31 +24,45 @@ items:
               Jenkins.instance.queue.clear()
         timeoutSeconds: 0
         itemSource:
-          jenkinsRootItemSource: {}
+          jenkinsRootItemSource: {
+            }
+        filters:
+        - isMasterOnlineFilter: {
+            }
         inParallel: 0
         noRetries: 0
     scm:
-      none: {}
+      none: {
+        }
     scmCheckoutStrategy:
-      standard: {}
+      standard: {
+        }
   - kind: clusterOpProject
     name: restart-all-controllers
     blockBuildWhenDownstreamBuilding: false
     blockBuildWhenUpstreamBuilding: false
     concurrentBuild: true
+    description: ''
     disabled: false
     displayName: restart-all-controllers
     operations:
     - managedMasterClusterOperation:
         failureMode: IMMEDIATELY
         clusterOpSteps:
-        - restartMasterNowClusterOpStep: {}
+        - restartMasterNowClusterOpStep: {
+            }
         timeoutSeconds: 0
         itemSource:
-          jenkinsRootItemSource: {}
+          jenkinsRootItemSource: {
+            }
+        filters:
+        - isMasterOnlineFilter: {
+            }
         inParallel: 0
         noRetries: 0
     scm:
-      none: {}
+      none: {
+        }
     scmCheckoutStrategy:
-      standard: {}
+      standard: {
+        }
