@@ -7,6 +7,48 @@ items:
   displayName: admin
   items:
   - kind: clusterOpProject
+    name: managed-master-backup
+    blockBuildWhenDownstreamBuilding: false
+    blockBuildWhenUpstreamBuilding: false
+    concurrentBuild: false
+    description: ''
+    disabled: false
+    displayName: managed-master-backup
+    operations:
+    - managedMasterClusterOperation:
+        failureMode: IMMEDIATELY
+        clusterOpSteps:
+        - backupClusterOpStep:
+            subjects:
+            - buildRecordSubject: {
+                }
+            format:
+              zipFormat: {
+                }
+            retentionPolicy:
+              exponentialDecayRetentionPolicy: {
+                }
+            safeDelaySeconds: 0
+            store:
+              s3Store:
+                bucketName: crodriguezlopez-v3.backups
+                sse: true
+                bucketFolder: cbci_backup_plugin
+                credentialsId: ''
+                region: us-east-1
+        timeoutSeconds: 0
+        itemSource:
+          jenkinsRootItemSource: {
+            }
+        inParallel: 0
+        noRetries: 0
+    triggers:
+    - cron:
+        spec: |-
+          TZ=Europe/London
+
+          @midnight
+  - kind: clusterOpProject
     name: purge-build-queue
     blockBuildWhenDownstreamBuilding: false
     blockBuildWhenUpstreamBuilding: false
