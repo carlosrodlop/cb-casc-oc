@@ -1,3 +1,6 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
 items:
 - kind: folder
   name: admin
@@ -11,10 +14,6 @@ items:
       grantedAt: current
       propagates: 'false'
     name: admin-only
-  items:
-- kind: folder
-  name: admin
-  displayName: admin
   items:
   - kind: clusterOpProject
     name: backup-all-builds
