@@ -1,19 +1,24 @@
-removeStrategy:
-  rbac: SYNC
-  items: NONE
 items:
+- kind: folder
+  name: admin
+  displayName: admin
+  groups:
+  - members:
+      users:
+      - admin
+    roles:
+    - name: administer
+      grantedAt: current
+      propagates: 'false'
+    name: admin-only
+  items:
 - kind: folder
   name: admin
   displayName: admin
   items:
   - kind: clusterOpProject
-    name: backup-builds
-    blockBuildWhenDownstreamBuilding: false
-    blockBuildWhenUpstreamBuilding: false
-    concurrentBuild: false
-    description: ''
-    disabled: false
-    displayName: backup-builds
+    name: backup-all-builds
+    displayName: backup-all-builds
     operations:
     - managedMasterClusterOperation:
         failureMode: IMMEDIATELY
@@ -26,7 +31,6 @@ items:
             retentionPolicy:
               upToNRetentionPolicy:
                 n: 10
-            safeDelaySeconds: 0
             store:
               s3Store:
                 bucketName: crodriguezlopez-v3.backups
@@ -39,10 +43,6 @@ items:
           jenkinsRootItemSource: {}
         inParallel: 0
         noRetries: 0
-    scm:
-      none: {}
-    scmCheckoutStrategy:
-      standard: {}
     triggers:
     - cron:
         spec: |-
@@ -50,13 +50,8 @@ items:
 
           @midnight
   - kind: clusterOpProject
-    name: backup-conf
-    blockBuildWhenDownstreamBuilding: false
-    blockBuildWhenUpstreamBuilding: false
-    concurrentBuild: false
-    description: ''
-    disabled: false
-    displayName: backup-conf
+    name: backup-all-conf
+    displayName: backup-all-conf
     operations:
     - managedMasterClusterOperation:
         failureMode: IMMEDIATELY
@@ -71,7 +66,6 @@ items:
             retentionPolicy:
               upToNRetentionPolicy:
                 n: 10
-            safeDelaySeconds: 0
             store:
               s3Store:
                 bucketName: crodriguezlopez-v3.backups
@@ -88,52 +82,8 @@ items:
 
           @midnight
   - kind: clusterOpProject
-    name: managed-master-backup
-    blockBuildWhenDownstreamBuilding: false
-    blockBuildWhenUpstreamBuilding: false
-    concurrentBuild: false
-    description: ''
-    disabled: false
-    displayName: managed-master-backup
-    operations:
-    - managedMasterClusterOperation:
-        failureMode: IMMEDIATELY
-        clusterOpSteps:
-        - backupClusterOpStep:
-            subjects:
-            - buildRecordSubject: {
-                }
-            format:
-              zipFormat: {
-                }
-            retentionPolicy:
-              upToNRetentionPolicy:
-                n: 10
-            safeDelaySeconds: 0
-            store:
-              s3Store:
-                bucketName: crodriguezlopez-v3.backups
-                sse: true
-                bucketFolder: cbci_backup_plugin
-                credentialsId: ''
-                region: us-east-1
-        itemSource:
-          jenkinsRootItemSource: {
-            }
-    triggers:
-    - cron:
-        spec: |-
-          TZ=Europe/London
-
-          @midnight
-  - kind: clusterOpProject
-    name: purge-build-queue
-    blockBuildWhenDownstreamBuilding: false
-    blockBuildWhenUpstreamBuilding: false
-    concurrentBuild: true
-    description: ''
-    disabled: false
-    displayName: purge-build-queue
+    name: purge-all-build-queues
+    displayName: purge-all-build-queues
     operations:
     - managedMasterClusterOperation:
         failureMode: IMMEDIATELY
@@ -150,11 +100,6 @@ items:
             }
   - kind: clusterOpProject
     name: restart-all-controllers
-    blockBuildWhenDownstreamBuilding: false
-    blockBuildWhenUpstreamBuilding: false
-    concurrentBuild: true
-    description: ''
-    disabled: false
     displayName: restart-all-controllers
     operations:
     - managedMasterClusterOperation:
@@ -162,7 +107,6 @@ items:
         clusterOpSteps:
         - restartMasterNowClusterOpStep: {
             }
-        timeoutSeconds: 0
         itemSource:
           jenkinsRootItemSource: {
             }

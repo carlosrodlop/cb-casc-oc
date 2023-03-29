@@ -10,8 +10,8 @@ jcasc:
 plugins:
   - plugins.yaml
 items:
-  - items-controllers.yaml
+  - items-root.yaml
+  - items-folder-admin.yaml
   - items-load-controllers.yaml
-  - items-clusters_ops.yaml
 rbac:
   - rbac.yaml
