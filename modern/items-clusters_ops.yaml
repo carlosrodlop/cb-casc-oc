@@ -7,6 +7,87 @@ items:
   displayName: admin
   items:
   - kind: clusterOpProject
+    name: backup-builds
+    blockBuildWhenDownstreamBuilding: false
+    blockBuildWhenUpstreamBuilding: false
+    concurrentBuild: false
+    description: ''
+    disabled: false
+    displayName: backup-builds
+    operations:
+    - managedMasterClusterOperation:
+        failureMode: IMMEDIATELY
+        clusterOpSteps:
+        - backupClusterOpStep:
+            subjects:
+            - buildRecordSubject: {}
+            format:
+              zipFormat: {}
+            retentionPolicy:
+              upToNRetentionPolicy:
+                n: 10
+            safeDelaySeconds: 0
+            store:
+              s3Store:
+                bucketName: crodriguezlopez-v3.backups
+                sse: true
+                bucketFolder: cbci_backup_plugin/builds
+                credentialsId: ''
+                region: us-east-1
+        timeoutSeconds: 0
+        itemSource:
+          jenkinsRootItemSource: {}
+        inParallel: 0
+        noRetries: 0
+    scm:
+      none: {}
+    scmCheckoutStrategy:
+      standard: {}
+    triggers:
+    - cron:
+        spec: |-
+          TZ=Europe/London
+
+          @midnight
+  - kind: clusterOpProject
+    name: backup-conf
+    blockBuildWhenDownstreamBuilding: false
+    blockBuildWhenUpstreamBuilding: false
+    concurrentBuild: false
+    description: ''
+    disabled: false
+    displayName: backup-conf
+    operations:
+    - managedMasterClusterOperation:
+        failureMode: IMMEDIATELY
+        clusterOpSteps:
+        - backupClusterOpStep:
+            subjects:
+            - jobConfigurationSubject: {}
+            - systemConfigurationSubject:
+                omitMasterKey: false
+            format:
+              zipFormat: {}
+            retentionPolicy:
+              upToNRetentionPolicy:
+                n: 10
+            safeDelaySeconds: 0
+            store:
+              s3Store:
+                bucketName: crodriguezlopez-v3.backups
+                sse: true
+                bucketFolder: cbci_backup_plugin/conf
+                credentialsId: ''
+                region: us-east-1
+        itemSource:
+          jenkinsRootItemSource: {}
+    triggers:
+    - cron:
+        spec: |-
+          TZ=Europe/London
+
+          @midnight
+  - kind: clusterOpProject
     name: managed-master-backup
     blockBuildWhenDownstreamBuilding: false
     blockBuildWhenUpstreamBuilding: false
@@ -26,8 +107,8 @@ items:
               zipFormat: {
                 }
             retentionPolicy:
-              exponentialDecayRetentionPolicy: {
-                }
+              upToNRetentionPolicy:
+                n: 10
             safeDelaySeconds: 0
             store:
               s3Store:
@@ -36,12 +117,9 @@ items:
                 bucketFolder: cbci_backup_plugin
                 credentialsId: ''
                 region: us-east-1
-        timeoutSeconds: 0
         itemSource:
           jenkinsRootItemSource: {
             }
-        inParallel: 0
-        noRetries: 0
     triggers:
     - cron:
         spec: |-
@@ -64,21 +142,12 @@ items:
             script: |-
               //https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-can-i-purge-or-clean-the-build-queue
               Jenkins.instance.queue.clear()
-        timeoutSeconds: 0
         itemSource:
           jenkinsRootItemSource: {
             }
         filters:
         - isMasterOnlineFilter: {
             }
-        inParallel: 0
-        noRetries: 0
-    scm:
-      none: {
-        }
-    scmCheckoutStrategy:
-      standard: {
-        }
   - kind: clusterOpProject
     name: restart-all-controllers
     blockBuildWhenDownstreamBuilding: false
@@ -100,11 +169,3 @@ items:
         filters:
         - isMasterOnlineFilter: {
             }
-        inParallel: 0
-        noRetries: 0
-    scm:
-      none: {
-        }
-    scmCheckoutStrategy:
-      standard: {
-        }
