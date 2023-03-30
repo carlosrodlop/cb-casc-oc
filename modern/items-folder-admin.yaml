@@ -34,7 +34,7 @@ items:
               s3Store:
                 bucketName: crodriguezlopez-v3.backups
                 sse: true
-                bucketFolder: cbci_backup_plugin/builds
+                bucketFolder: cbci/backups/builds
                 credentialsId: ''
                 region: us-east-1
         timeoutSeconds: 0
@@ -69,7 +69,7 @@ items:
               s3Store:
                 bucketName: crodriguezlopez-v3.backups
                 sse: true
-                bucketFolder: cbci_backup_plugin/conf
+                bucketFolder: cbci/backups/conf
                 credentialsId: ''
                 region: us-east-1
         itemSource:
