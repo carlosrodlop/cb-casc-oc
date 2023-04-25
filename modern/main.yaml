@@ -65,19 +65,17 @@ advisor:
     - "HeapUsageHistogram"
     - "OtherLogs"
     - "SlaveLaunchLogs"
-  # Node pools for Kubernetes installation
-  # masterprovisioning:
-  #   kubernetes:
-  #     yaml: |-
-  #       kind: StatefulSet
-  #       spec:
-  #         template:
-  #           metadata:
-  #             annotations:
-  #               cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
-  #           spec:
-  #             tolerations:
-  #               - key: "dedicated"
-  #                 operator: "Equal"
-  #                 value: "apps"
-  #                 effect: "NoSchedule"
+masterprovisioning:
+  kubernetes:
+    nodeSelectors: "ci_type=cb-apps"
+    yaml: |-
+      ---
+      kind: StatefulSet
+      spec:
+        template:
+          spec:
+            tolerations:
+            - key: "dedicated"
+              operator: "Equal"
+              value: "cb-apps"
+              effect: "NoSchedule"

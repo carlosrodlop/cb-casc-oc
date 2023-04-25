@@ -7,7 +7,6 @@ plugins:
 - id: aws-java-sdk-elasticbeanstalk
 - id: aws-java-sdk-minimal
 - id: blueocean-commons
-- id: bootstrap4-api
 - id: bootstrap5-api
 - id: bouncycastle-api
 - id: caffeine-api
@@ -68,6 +67,7 @@ plugins:
 - id: kubernetes
 - id: kubernetes-client-api
 - id: kubernetes-credentials
+- id: ldap
 - id: mailer
 - id: mapdb-api
 - id: master-provisioning-core
@@ -77,6 +77,7 @@ plugins:
 - id: mina-sshd-api-core
 - id: mina-sshd-api-scp
 - id: mina-sshd-api-sftp
+- id: mock-security-realm
 - id: nectar-license
 - id: nectar-rbac
 - id: node-iterator-api
@@ -94,7 +95,6 @@ plugins:
 - id: operations-center-updatecenter
 - id: plain-credentials
 - id: plugin-util-api
-- id: popper-api
 - id: popper2-api
 - id: scm-api
 - id: script-security

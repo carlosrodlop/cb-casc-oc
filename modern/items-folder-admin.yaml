@@ -1,114 +1,169 @@
-removeStrategy:
-  rbac: SYNC
-  items: NONE
+kind: folder
+name: admin
+displayName: admin
+groups:
+- members:
+    external_groups:
+    - CI_Admins
+    unknown:
+    - admin
+  roles:
+  - name: administer
+    grantedAt: current
+    propagates: 'false'
+  name: admin-only
 items:
-- kind: folder
-  name: admin
-  displayName: admin
-  groups:
-  - members:
-      users:
-      - admin
-    roles:
-    - name: administer
-      grantedAt: current
-      propagates: 'false'
-    name: admin-only
-  items:
-  - kind: clusterOpProject
-    name: backup-all-builds
-    displayName: backup-all-builds
-    operations:
-    - managedMasterClusterOperation:
-        failureMode: IMMEDIATELY
-        clusterOpSteps:
-        - backupClusterOpStep:
-            subjects:
-            - buildRecordSubject: {}
-            format:
-              zipFormat: {}
-            retentionPolicy:
-              upToNRetentionPolicy:
-                n: 10
-            store:
-              s3Store:
-                bucketName: crodriguezlopez-v3.backups
-                sse: true
-                bucketFolder: cbci/backups/builds
-                credentialsId: ''
-                region: us-east-1
-        timeoutSeconds: 0
-        itemSource:
-          jenkinsRootItemSource: {}
-        inParallel: 0
-        noRetries: 0
-    triggers:
-    - cron:
-        spec: |-
-          TZ=Europe/London
+- kind: clusterOpProject
+  name: backup-all-builds
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  concurrentBuild: true
+  disabled: false
+  displayName: backup-all-builds
+  operations:
+  - managedMasterClusterOperation:
+      failureMode: IMMEDIATELY
+      clusterOpSteps:
+      - backupClusterOpStep:
+          subjects:
+          - buildRecordSubject: {
+              }
+          format:
+            zipFormat: {
+              }
+          retentionPolicy:
+            upToNRetentionPolicy:
+              n: 10
+          safeDelaySeconds: 0
+          store:
+            s3Store:
+              bucketName: crodriguezlopez-v3.backups
+              sse: true
+              bucketFolder: cbci/backups/builds
+              credentialsId: ''
+              region: us-east-1
+      timeoutSeconds: 0
+      itemSource:
+        jenkinsRootItemSource: {
+          }
+      inParallel: 0
+      noRetries: 0
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }
+  triggers:
+  - cron:
+      spec: |-
+        TZ=Europe/London
 
-          @midnight
-  - kind: clusterOpProject
-    name: backup-all-conf
-    displayName: backup-all-conf
-    operations:
-    - managedMasterClusterOperation:
-        failureMode: IMMEDIATELY
-        clusterOpSteps:
-        - backupClusterOpStep:
-            subjects:
-            - jobConfigurationSubject: {}
-            - systemConfigurationSubject:
-                omitMasterKey: false
-            format:
-              zipFormat: {}
-            retentionPolicy:
-              upToNRetentionPolicy:
-                n: 10
-            store:
-              s3Store:
-                bucketName: crodriguezlopez-v3.backups
-                sse: true
-                bucketFolder: cbci/backups/conf
-                credentialsId: ''
-                region: us-east-1
-        itemSource:
-          jenkinsRootItemSource: {}
-    triggers:
-    - cron:
-        spec: |-
-          TZ=Europe/London
+        @midnight
+- kind: clusterOpProject
+  name: backup-all-conf
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  concurrentBuild: true
+  disabled: false
+  displayName: backup-all-conf
+  operations:
+  - managedMasterClusterOperation:
+      failureMode: IMMEDIATELY
+      clusterOpSteps:
+      - backupClusterOpStep:
+          subjects:
+          - jobConfigurationSubject: {
+              }
+          - systemConfigurationSubject:
+              omitMasterKey: false
+          format:
+            zipFormat: {
+              }
+          retentionPolicy:
+            upToNRetentionPolicy:
+              n: 10
+          safeDelaySeconds: 0
+          store:
+            s3Store:
+              bucketName: crodriguezlopez-v3.backups
+              sse: true
+              bucketFolder: cbci/backups/conf
+              credentialsId: ''
+              region: us-east-1
+      timeoutSeconds: 0
+      itemSource:
+        jenkinsRootItemSource: {
+          }
+      inParallel: 1
+      noRetries: 0
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }
+  triggers:
+  - cron:
+      spec: |-
+        TZ=Europe/London
 
-          @midnight
-  - kind: clusterOpProject
-    name: purge-all-build-queues
-    displayName: purge-all-build-queues
-    operations:
-    - managedMasterClusterOperation:
-        failureMode: IMMEDIATELY
-        clusterOpSteps:
-        - masterGroovyClusterOpStep:
-            script: |-
-              //https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-can-i-purge-or-clean-the-build-queue
-              Jenkins.instance.queue.clear()
-        itemSource:
-          jenkinsRootItemSource: {
-            }
-        filters:
-        - isMasterOnlineFilter: {
-            }
-  - kind: clusterOpProject
-    name: restart-all-controllers
-    displayName: restart-all-controllers
-    operations:
-    - managedMasterClusterOperation:
-        failureMode: IMMEDIATELY
-        clusterOpSteps:
-        - restartMasterNowClusterOpStep: {
-            }
-        itemSource:
-          jenkinsRootItemSource: {
-            }
-        filters:
-        - isMasterOnlineFilter: {
-            }
+        @midnight
+- kind: clusterOpProject
+  name: purge-all-build-queues
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  concurrentBuild: true
+  disabled: false
+  displayName: purge-all-build-queues
+  operations:
+  - managedMasterClusterOperation:
+      failureMode: IMMEDIATELY
+      clusterOpSteps:
+      - masterGroovyClusterOpStep:
+          script: |-
+            //https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/client-and-managed-masters/how-can-i-purge-or-clean-the-build-queue
+            Jenkins.instance.queue.clear()
+      timeoutSeconds: 0
+      itemSource:
+        jenkinsRootItemSource: {
+          }
+      filters:
+      - isMasterOnlineFilter: {
+          }
+      inParallel: 1
+      noRetries: 0
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }
+- kind: clusterOpProject
+  name: restart-all-controllers
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  concurrentBuild: true
+  disabled: false
+  displayName: restart-all-controllers
+  operations:
+  - managedMasterClusterOperation:
+      failureMode: IMMEDIATELY
+      clusterOpSteps:
+      - restartMasterNowClusterOpStep: {
+          }
+      timeoutSeconds: 0
+      itemSource:
+        jenkinsRootItemSource: {
+          }
+      filters:
+      - isMasterOnlineFilter: {
+          }
+      inParallel: 1
+      noRetries: 0
+  scm:
+    none: {
+      }
+  scmCheckoutStrategy:
+    standard: {
+      }

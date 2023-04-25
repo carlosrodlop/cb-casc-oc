@@ -107,17 +107,15 @@ roles:
   name: browse
 groups:
 - members:
-    users:
+    external_groups:
+    - CI_Admins
+    unknown:
     - admin
   roles:
   - name: administer
     grantedAt: current
   name: Administrators
-- members:
-    users:
-    - developer
-    - guest
-  roles:
+- roles:
   - name: login
     grantedAt: current
     propagates: 'false'

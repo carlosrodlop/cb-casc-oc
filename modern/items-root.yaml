@@ -7,33 +7,10 @@ items:
     configuration:
       kubernetes:
         memory: 6144
-        fsGroup: "1000"
         cpus: 4.0
-        readinessTimeoutSeconds: 5
-        livenessInitialDelaySeconds: 300
-        readinessInitialDelaySeconds: 30
         disk: 5
-        readinessFailureThreshold: 100
-        livenessTimeoutSeconds: 10
         # storageClassName: my-storage-class
         domain: good-boy
-        # javaOptions: -XshowSettings:vm -XX:+AlwaysPreTouch -XX:+UseG1GC  -XX:+ParallelRefProcEnabled
-        #   -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0
-        # nodeSelectors: dedicated=sda-ci
-        # yaml: |-
-        #   ---
-        # kind: StatefulSet
-        # spec:
-        #   template:
-        #     metadata:
-        #       annotations:
-        #         cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
-        #     spec:
-        #       tolerations:
-        #       - key: "dedicated"
-        #         operator: "Equal"
-        #         value: "sda-ci"
-        #         effect: "NoSchedule"
     properties:
     - configurationAsCode:
         bundle: "modern.good-boy"
@@ -42,12 +19,6 @@ items:
     configuration:
       kubernetes:
         memory: 2048
-        fsGroup: "1000"
         cpus: 1.0
-        readinessTimeoutSeconds: 5
-        livenessInitialDelaySeconds: 300
-        readinessInitialDelaySeconds: 30
-        disk: 5
-        readinessFailureThreshold: 100
-        livenessTimeoutSeconds: 10
+        disk: 3
         domain: fresh-boy
