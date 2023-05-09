@@ -1,5 +1,5 @@
 apiVersion: "1"
-id: "jenkins"
+id: "modern.oc.parent"
 version: "1"
 jcasc:
   - main.yaml
@@ -15,3 +15,5 @@ items:
   - items-load-controllers.yaml
 rbac:
   - rbac.yaml
+
+

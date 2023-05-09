@@ -8,7 +8,5 @@ Repository for [Configuration as Code for the operations center](https://docs.cl
 
 ### Modern
 
-- Security: Authentication configuration options. Update your [modern/bundle.yaml]() accordingly.
-  - v1: `local`
-  - v2: `ldap`. It requires that the ldap service is running
-- `items-load-controllers.yaml` is built dynamically from [K8s-lib/helm/charts/cb-ci-local](https://github.com/carlosrodlop/K8s-lib/tree/v0.3.0/helm/charts/cb-ci-local)
+- Use `modern.oc.ldap` the connected controllers bundle repository use the LDAP configuration for segregation of Teams.
+- `items-load-controllers.yaml` and `controllerBundleStorageSCM.yaml` are built dynamically from [K8s-lib/helm/charts/cb-ci-local](https://github.com/carlosrodlop/K8s-lib/tree/v0.3.0/helm/charts/cb-ci-local)

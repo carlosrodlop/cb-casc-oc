@@ -109,13 +109,15 @@ groups:
 - members:
     external_groups:
     - CI_Admins
-    unknown:
-    - admin
   roles:
   - name: administer
     grantedAt: current
   name: Administrators
-- roles:
+- members:
+    external_groups:
+    - Dev_Team_X
+    - Dev_Team_Y
+  roles:
   - name: login
     grantedAt: current
     propagates: 'false'
