@@ -2,11 +2,11 @@ jenkins:
   securityRealm:
     ldap:
       configurations:
-      - managerDN: "cn=admin,dc=acme,dc=org"
-        managerPasswordSecret: "admin"
-        rootDN: "dc=acme,dc=org"
-        server: "ldap-service.kube-system.svc.cluster.local"
-        userSearch: "cn={0}"
+        - managerDN: "cn=admin,dc=acme,dc=org"
+          managerPasswordSecret: "admin"
+          rootDN: "dc=acme,dc=org"
+          server: "ldap-service.kube-system.svc.cluster.local"
+          userSearch: "cn={0}"
   # Best-Practice: RBAC as authorization
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   remotingSecurity:

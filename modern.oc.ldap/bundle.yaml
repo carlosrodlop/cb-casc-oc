@@ -15,5 +15,3 @@ items:
   - items-load-controllers.yaml
 rbac:
   - rbac.yaml
-
-

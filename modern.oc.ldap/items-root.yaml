@@ -12,8 +12,8 @@ items:
         # storageClassName: my-storage-class
         domain: good-boy
     properties:
-    - configurationAsCode:
-        bundle: "modern.good-boy"
+      - configurationAsCode:
+          bundle: "modern.good-boy"
   - kind: managedController
     name: fresh-boy
     configuration:
