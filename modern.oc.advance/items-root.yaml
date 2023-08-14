@@ -13,12 +13,4 @@ items:
         domain: good-boy
     properties:
       - configurationAsCode:
-          bundle: "modern.good-boy"
-  - kind: managedController
-    name: fresh-boy
-    configuration:
-      kubernetes:
-        memory: 2048
-        cpus: 1.0
-        disk: 3
-        domain: fresh-boy
+          bundle: "main/modern.good-boy"

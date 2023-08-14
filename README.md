@@ -8,5 +8,5 @@ Repository for [Configuration as Code for the operations center](https://docs.cl
 
 ### Modern
 
-- Use `modern.oc.ldap` the connected controllers bundle repository use the LDAP configuration for segregation of Teams.
+- Use `modern.oc.advance` the connected controllers bundle repository and use the LDAP configuration for segregation of Teams.
 - `items-load-controllers.yaml` and `controllerBundleStorageSCM.yaml` are built dynamically from [K8s-lib/helm/charts/cb-ci-local](https://github.com/carlosrodlop/K8s-lib/tree/v0.3.0/helm/charts/cb-ci-local)

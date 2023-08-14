@@ -28,11 +28,11 @@ items:
                     safeDelaySeconds: 0
                     store:
                       s3Store:
-                        bucketName: crodriguezlopez-v3.backups
+                        bucketName: ${backup_bucketName}
                         sse: true
-                        bucketFolder: cbci/backups/builds
+                        bucketFolder: ${backup_folderName}
                         credentialsId: ""
-                        region: us-east-1
+                        region: ${backup_region}
               timeoutSeconds: 0
               itemSource:
                 jenkinsRootItemSource: {}
@@ -72,11 +72,11 @@ items:
                     safeDelaySeconds: 0
                     store:
                       s3Store:
-                        bucketName: crodriguezlopez-v3.backups
+                        bucketName: ${backup_bucketName}
                         sse: true
-                        bucketFolder: cbci/backups/conf
+                        bucketFolder: ${backup_folderName}
                         credentialsId: ""
-                        region: us-east-1
+                        region: ${backup_region}
               timeoutSeconds: 0
               itemSource:
                 jenkinsRootItemSource: {}
@@ -130,6 +130,34 @@ items:
               failureMode: IMMEDIATELY
               clusterOpSteps:
                 - restartMasterNowClusterOpStep: {}
+              timeoutSeconds: 0
+              itemSource:
+                jenkinsRootItemSource: {}
+              filters:
+                - isMasterOnlineFilter: {}
+              inParallel: 1
+              noRetries: 0
+        scm:
+          none: {}
+        scmCheckoutStrategy:
+          standard: {}
+      - kind: clusterOpProject
+        name: upgrade-all-controllers
+        blockBuildWhenDownstreamBuilding: false
+        blockBuildWhenUpstreamBuilding: false
+        concurrentBuild: true
+        disabled: false
+        displayName: upgrade-all-controllers
+        operations:
+          - managedMasterClusterOperation:
+              failureMode: IMMEDIATELY
+              clusterOpSteps:
+                - updateDockerImageClusterOpStep:
+                    image:
+                    failOnError: false
+                - reprovisionClusterOpStep:
+                    force: false
+                    failOnError: false
               timeoutSeconds: 0
               itemSource:
                 jenkinsRootItemSource: {}

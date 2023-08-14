@@ -1,0 +1,9 @@
+apiVersion: "1"
+id: "modern.oc.parent"
+version: "1"
+jcasc:
+  - main.yaml
+items:
+  - items-root.yaml
+plugins:
+  - plugins.yaml

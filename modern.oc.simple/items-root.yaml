@@ -1,0 +1,12 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+  - kind: managedController
+    name: fresh-boy
+    configuration:
+      kubernetes:
+        memory: 2048
+        cpus: 1.0
+        disk: 3
+        domain: fresh-boy
