@@ -36,8 +36,6 @@ unclassified:
   usageStatisticsCloudBees:
     disabledJenkinsUsageStatistics: true
     usageStatisticsCollected: false
-  location:
-    adminAddress: ${adminCBCIAddress}
 cloudBeesCasCServer:
   defaultBundle: "good-boy"
   visibility: true
@@ -53,7 +51,7 @@ beekeeper:
 # Best-Practice: Operations at Scale. CloudBees Advisor
 advisor:
   acceptToS: true
-  email: "example.user@mail.com"
+  email: ${secretAdvisorMail}
   excludedComponents:
     - "AgentsSystemConfiguration"
     - "KubernetesMasterLogs"

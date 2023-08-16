@@ -7,3 +7,5 @@ items:
   - items-root.yaml
 plugins:
   - plugins.yaml
+variables:
+  - variables.yaml

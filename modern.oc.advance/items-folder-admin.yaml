@@ -30,12 +30,14 @@ items:
                       s3Store:
                         bucketName: ${backup_bucketName}
                         sse: true
-                        bucketFolder: ${backup_folderName}
+                        bucketFolder: ${backup_folderName}/builds
                         credentialsId: ""
                         region: ${backup_region}
               timeoutSeconds: 0
               itemSource:
                 jenkinsRootItemSource: {}
+              filters:
+                - isMasterOnlineFilter: {} # It is required to avoid process hanging for hibernated controllers
               inParallel: 0
               noRetries: 0
         scm:
@@ -74,12 +76,14 @@ items:
                       s3Store:
                         bucketName: ${backup_bucketName}
                         sse: true
-                        bucketFolder: ${backup_folderName}
+                        bucketFolder: ${backup_folderName}/conf
                         credentialsId: ""
                         region: ${backup_region}
               timeoutSeconds: 0
               itemSource:
                 jenkinsRootItemSource: {}
+              filters:
+                - isMasterOnlineFilter: {} # It is required to avoid process hanging for hibernated controllers  
               inParallel: 1
               noRetries: 0
         scm:
@@ -111,7 +115,7 @@ items:
               itemSource:
                 jenkinsRootItemSource: {}
               filters:
-                - isMasterOnlineFilter: {}
+                - isMasterOnlineFilter: {} # It is required to avoid process hanging for hibernated controllers
               inParallel: 1
               noRetries: 0
         scm:
@@ -134,7 +138,7 @@ items:
               itemSource:
                 jenkinsRootItemSource: {}
               filters:
-                - isMasterOnlineFilter: {}
+                - isMasterOnlineFilter: {} # It is required to avoid process hanging for hibernated controllers
               inParallel: 1
               noRetries: 0
         scm:
@@ -162,7 +166,7 @@ items:
               itemSource:
                 jenkinsRootItemSource: {}
               filters:
-                - isMasterOnlineFilter: {}
+                - isMasterOnlineFilter: {} # It is required to avoid process hanging for hibernated controllers
               inParallel: 1
               noRetries: 0
         scm:

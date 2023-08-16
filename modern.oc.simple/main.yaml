@@ -1,13 +1,13 @@
 jenkins:
-  systemMessage: "Hello World! from Casc"
+  systemMessage: ${message}
 credentials:
   system:
     domainCredentials:
-      - credentials:
-          - usernamePassword:
-              description: "GH-token"
-              id: "GH-token"
-              password: ${githubToken}
-              scope: GLOBAL
-              username: ${githubUser}
-              usernameSecret: true
+    - credentials:
+      - usernamePassword:
+          description: "GH-token"
+          id: "GH-token"
+          password: ${secretGithubToken}
+          scope: GLOBAL
+          username: ${secretGithubUser}
+          usernameSecret: true
