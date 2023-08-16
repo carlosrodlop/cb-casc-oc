@@ -36,6 +36,8 @@ unclassified:
   usageStatisticsCloudBees:
     disabledJenkinsUsageStatistics: true
     usageStatisticsCollected: false
+  location:
+    adminAddress: ${adminCBCIAddress}
 cloudBeesCasCServer:
   defaultBundle: "good-boy"
   visibility: true
