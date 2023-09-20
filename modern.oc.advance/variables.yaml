@@ -1,4 +1,9 @@
 variables:
-  - backup_bucketName: pr-000592-v3-ci-backups
+  - backup_bucketName: crodriguezlopez-ci-backups
   - backup_folderName: cbci/backups
   - backup_region: us-east-1
+  - ldapManagerDN: "cn=admin,dc=acme,dc=org"
+  - ldapManagerPasswordSecret: "admin"
+  - ldapRootDN: "dc=acme,dc=org"
+  - ldapServer: "ldap-service.auth.svc.cluster.local"
+  - ldapUserSearch: "cn={0}"
