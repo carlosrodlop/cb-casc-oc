@@ -6,6 +6,8 @@ Repository for [Configuration as Code for the operations center](https://docs.cl
 
 Plugins and plugin catalogs curated with [casc-plugin-dependency-calculation](https://github.com/kyounger/casc-plugin-dependency-calculation).
 
+Copy `variables.yaml.example` to `variables.yaml` and set your own values.
+
 Note on `modern.oc.advance` : `items-load-controllers.yaml` and `controllerBundleStorageSCM.yaml` are built dynamically from [K8s-lib/helm/charts/cb-ci-local](https://github.com/carlosrodlop/K8s-lib/tree/v0.3.0/helm/charts/cb-ci-local).
 
 These bundles have been validated against `CBCI_VERSION` (`CBCI_VERSION_APP`) from CloudBees CI deployed [here](https://github.com/carlosrodlop/K8s-lib/blob/main/bash/make/cb-ci/Makefile).
