@@ -2,11 +2,11 @@ jenkins:
   securityRealm:
     ldap:
       configurations:
-        - managerDN: ${ldapManagerDN}
-          managerPasswordSecret: ${ldapManagerPasswordSecret}
-          rootDN: ${ldapRootDN}
-          server: ${ldapServer}
-          userSearch: ${ldapUserSearch}
+        - managerDN: ${ldap_ManagerDN}
+          managerPasswordSecret: ${ldap_ManagerPasswordSecret}
+          rootDN: ${ldap_RootDN}
+          server: ${ldap_Server}
+          userSearch: ${ldap_UserSearch}
   # Best-Practice: RBAC as authorization
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   remotingSecurity:
