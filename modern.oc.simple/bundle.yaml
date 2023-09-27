@@ -1,11 +1,11 @@
 apiVersion: "1"
-id: "modern.oc.parent"
+id: "modern.oc.simple"
 version: "1"
 jcasc:
-  - main.yaml
+  - jcasc
 items:
-  - items-root.yaml
+  - items
 plugins:
-  - plugins.yaml
+  - plugins
 variables:
   - variables.yaml
