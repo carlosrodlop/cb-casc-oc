@@ -2,17 +2,17 @@ apiVersion: "1"
 id: "modern.oc.advance"
 version: "1"
 jcasc:
-  - main.yaml
-  - location.yaml
-  - credentials.yaml
-  - controllerBundleStorageSCM.yaml
-  - security.yaml
+  - jcasc-main.yaml
+  - jcasc-location.yaml #From cb-ci-local/templates/oc-casc-bundle.yaml
+  - jcasc-credentials.yaml
+  - jcasc-controllerBundleStorageSCM.yaml #From cb-ci-local/templates/oc-casc-bundle.yaml
+  - jcasc-security.yaml
 plugins:
   - plugins.yaml
 items:
   - items-root.yaml
   - items-folder-admin.yaml
-  - items-load-controllers.yaml
+  - items-load-controllers.yaml #From cb-ci-local/templates/oc-casc-bundle.yaml
 rbac:
   - rbac.yaml
 variables:
