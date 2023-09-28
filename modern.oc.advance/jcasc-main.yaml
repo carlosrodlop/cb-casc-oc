@@ -37,7 +37,7 @@ unclassified:
     disabledJenkinsUsageStatistics: true
     usageStatisticsCollected: false
 cloudBeesCasCServer:
-  defaultBundle: "good-boy"
+  defaultBundle: "modern.good-boy"
   visibility: true
 # Best-Practice: Enable Beekeeper
 beekeeper:
@@ -79,7 +79,7 @@ masterprovisioning:
               - name: jenkins
                 volumeMounts:
                   - mountPath: /var/run/secrets/cbci-secrets
-                    name: oc-secrets
+                    name: cbci-secrets
                 env:
                   - name: SECRETS
                     value: /var/run/secrets/cbci-secrets
