@@ -6,6 +6,6 @@ jcasc:
 items:
   - items-root.yaml
 plugins:
-  - plugins.yaml
+  - plugins.2.414.3.8.minimal.yaml
 variables:
   - variables.yaml

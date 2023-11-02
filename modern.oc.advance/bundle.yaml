@@ -8,7 +8,7 @@ jcasc:
   - jcasc-controllerBundleStorageSCM.yaml #From cb-ci-local/templates/oc-casc-bundle.yaml
   - jcasc-security.yaml
 plugins:
-  - plugins.yaml
+  - plugins.2.414.3.8.minimal.yaml
 items:
   - items-root.yaml
   - items-folder-admin.yaml

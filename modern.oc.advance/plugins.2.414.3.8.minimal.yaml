@@ -23,7 +23,6 @@ plugins:
   - id: cloudbees-casc-items-server # cap lst src min gen
   - id: cloudbees-jenkins-advisor # cap lst src min gen
   - id: cloudbees-prometheus # cap lst src min gen
-  - id: configuration-as-code # cap lst src min gen
   - id: github # cap lst src min gen
   - id: jsch # cap lst src min gen
   - id: junit # cap lst src min gen
