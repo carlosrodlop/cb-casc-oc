@@ -9,7 +9,7 @@ items:
         memory: 6144
         cpus: 4.0
         disk: 5
-        # storageClassName: my-storage-class
+        storageClassName: ${sc_not_ha}
         domain: good-boy
     properties:
       - configurationAsCode:
